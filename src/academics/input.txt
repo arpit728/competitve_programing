@@ -1,0 +1,10 @@
+10 12 3 16
+1 8 7 11 15
+50
+1 0
+1 1
+1 -1
+-1 1
+-1 -1
+//input weights for nand and nor gate
+-1 -1
