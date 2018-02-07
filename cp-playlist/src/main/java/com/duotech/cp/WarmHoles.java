@@ -26,9 +26,13 @@ public class WarmHoles {
         x = Integer.parseInt(in[1]);
         y = Integer.parseInt(in[2]);
         for (int i = 0; i < n; i++) {
-            in=br.readLine().split("\\s");
-            s[i] = Integer.parseInt(in[0]);
-            f[i] = Integer.parseInt(in[1]);
+            try {
+                in = br.readLine().split("\\s");
+                s[i] = Integer.parseInt(in[0]);
+                f[i] = Integer.parseInt(in[1]);
+            } catch (Exception e) {
+
+            }
         }
         in = br.readLine().split("\\s");
         for (int i = 0; i < x; i++) {
