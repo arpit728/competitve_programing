@@ -7,13 +7,11 @@ import java.io.IOException;
  */
 public class Experiment {
 
-    static int a[][] = new int[10000][1000];
+    static int a[][] = new int[6100][6100];
 
     public static void main(String...args) throws IOException {
 
-        StringBuilder s = new StringBuilder("arpit ");
-        s.deleteCharAt(s.length()-1);
-        System.out.println(s.toString());
+        System.out.println(a[0][0]);
     }
 
 
