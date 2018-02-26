@@ -34,21 +34,25 @@ public class CalvinsGame {
     }
 
     private static int maxScore(int[] a, int n, int k) {
+        if (n==1) return 0;
+        if (n == 2) {
+            if (k == 1) {
+                return max(0, a[1]);
+            }
+            if (k==2)
+                return a[1];
+        }
         Arrays.fill(dp, 0);
-        for (int i = k+1; i <=n ; i++) {
+        for (int i = k + 1; i <= n; i++) {
             dp[i] = max(dp[i - 1], dp[i - 2]) + a[i];
         }
-        int maxScore = 0, maxScoreIndex = k;
-        for (int i = k; i <=n; i++) {
-            if (dp[i] > maxScore) {
-                maxScore = dp[i];
-                maxScoreIndex = i;
-            }
+        dp[n - 1] = max(dp[n - 1], dp[n] + a[n - 1]);
+        for (int i = n - 2; i > 0; i--) {
+            dp[i] = max(dp[i], max(dp[i + 1], dp[i + 2]) + a[i]);
         }
-        Arrays.fill(dp, 0);
-        for (int i = maxScoreIndex - 1; i > 0; i--) {
-            dp[i] = max(dp[i + 1], dp[i + 2]) + a[i];
+        if (k == 1) {
+            return max(0, dp[1]);
         }
-        return dp[1] + maxScore;
+        return dp[1];
     }
 }

@@ -10,13 +10,13 @@ import java.io.InputStreamReader;
 
 // TODO: 16/02/18 http://www.spoj.com/problems/LVADER/
 public class LVADER {
-    static final int MAX = 100001;
+    static final int MAX = 200005;
     static final long P = 1000000007;
     static long factorial[] = new long[MAX];
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int t, x1, y1, x2, y2;
+        int t, x1, y1, x2, y2, i = 1;
         String[] s;
         t = Integer.parseInt(br.readLine());
         fillFactorial();
@@ -26,8 +26,10 @@ public class LVADER {
             y1 = Integer.parseInt(s[1]);
             x2 = Integer.parseInt(s[2]);
             y2 = Integer.parseInt(s[3]);
-            System.out.println(solve(x1, y1, x2, y2));
+            System.out.println("Case " + i + ": " + solve(x1, y1, x2, y2));
+            i++;
         }
+        System.exit(0);
     }
 
     private static long solve(int x1, int y1, int x2, int y2) {
