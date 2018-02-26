@@ -8,7 +8,6 @@ import java.io.InputStreamReader;
  * Created by bugkiller on 16/02/18.
  */
 
-// TODO: 16/02/18 http://www.spoj.com/problems/LVADER/
 public class LVADER {
     static final int MAX = 200005;
     static final long P = 1000000007;
