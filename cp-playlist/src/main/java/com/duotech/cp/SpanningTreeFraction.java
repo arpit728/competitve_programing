@@ -1,20 +1,20 @@
 package com.duotech.cp;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 
 import static java.lang.Integer.parseInt;
 
 public class SpanningTreeFraction {
 
-    private static double edges[][] = new double[100000][5];
-    private static int parent[] = new int[100000];
+    static double edges[][] = new double[100000][5];
+    static int parent[] = new int[100000];
     private static final int U_INDEX=0,V_INDEX=1,A_INDEX=2, B_INDEX = 3, W_INDEX = 4;
 
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("input.txt"));
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n, m, u, v, a, b;
         String s[];
         s = br.readLine().split("\\s");
