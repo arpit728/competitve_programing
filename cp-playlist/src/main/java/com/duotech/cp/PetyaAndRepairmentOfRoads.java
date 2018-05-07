@@ -5,14 +5,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashSet;
 
 import static java.lang.Integer.parseInt;
 
 public class PetyaAndRepairmentOfRoads {
-    static int edges[][] = new int[200001][3];
-    static int parent[] = new int[100001];
-    static boolean milkMen[] = new boolean[100001];
+    private static int edges[][] = new int[200001][3];
+    private static int parent[] = new int[100001];
+    private static boolean milkMen[] = new boolean[100001];
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n, m, source, t, p;
@@ -42,11 +41,10 @@ public class PetyaAndRepairmentOfRoads {
     }
 
     private static String solve(int n, int m) {
-        HashSet<Integer> nonMilkmenConnectedCities = new HashSet<>();
+        int milkyCities = 0;
         Arrays.sort(edges, 0, m, Comparator.comparingInt(o -> o[2]));
         for (int i = 1; i <=n; i++) {
             parent[i] = i;
-            nonMilkmenConnectedCities.add(i);
         }
         long ans = 0;
         for (int i = 0; i < m; i++) {
@@ -54,25 +52,25 @@ public class PetyaAndRepairmentOfRoads {
             int v = edges[i][1];
             if (findSet(u) != findSet(v)) {
                 ans += edges[i][2];
-                findUnion(u, v,nonMilkmenConnectedCities);
+                findUnion(u, v);
             }
         }
         for (int i = 1; i <= n; i++) {
             findSet(i);
             if (milkMen[parent[i]]) {
-                nonMilkmenConnectedCities.remove(i);
+                milkyCities++;
             }
         }
-        if (nonMilkmenConnectedCities.size() > 0) {
+        if (milkyCities < n) {
             return "impossible";
         }
 
         return ans + "";
     }
 
-    private static void findUnion(int u, int v, HashSet<Integer> nonMilkmenConnectedCities) {
+    private static void findUnion(int u, int v) {
 
-        if (milkMen[u]) {
+        if (milkMen[parent[u]]) {
             parent[findSet(v)] = findSet(u);
         } else {
             parent[findSet(u)] = findSet(v);
