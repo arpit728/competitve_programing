@@ -5,3 +5,4 @@ out
 *.xml
 /.idea/
 /cp-playlist/target/
+target
